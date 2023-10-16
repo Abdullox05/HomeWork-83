@@ -4,7 +4,7 @@ import { UpdateWorkerDto } from './dto/update-worker.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Worker, WorkerDocument } from './schemas/worker.schema';
 import { Model, isValidObjectId } from 'mongoose';
-import { Speciality, SpecialityDocument } from 'src/speciality/schemas/speciality.schema';
+import { Speciality, SpecialityDocument } from '.././speciality/schemas/speciality.schema';
 
 @Injectable()
 export class WorkerService {
@@ -30,13 +30,19 @@ export class WorkerService {
   }
 
   async findAll() {
-    return await this.workerModel.find().populate("speciality_id").populate("blocks");
+    return await this.workerModel.find().populate("speciality_id")
+      .populate("blocks")
+      .populate("vaccination_histories")
+      .populate("record_of_illnesses");
   }
 
   async findOne(id: string) {
     if (!isValidObjectId(id)) throw new BadRequestException("Wrong ID");
 
-    return await this.workerModel.findById(id).populate("speciality_id").populate("blocks");
+    return await this.workerModel.findById(id).populate("speciality_id")
+      .populate("blocks")
+      .populate("vaccination_histories")
+      .populate("record_of_illnesses");
   }
 
   async update(id: string, updateWorkerDto: UpdateWorkerDto) {

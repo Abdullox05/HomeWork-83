@@ -15,4 +15,3 @@ export class WorkersBlock {
 }
 
 export const WorkersBlockSchema = SchemaFactory.createForClass(WorkersBlock);
-

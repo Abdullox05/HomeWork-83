@@ -3,7 +3,7 @@ import { WorkerService } from './worker.service';
 import { WorkerController } from './worker.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Worker, WorkerSchema } from './schemas/worker.schema';
-import { Speciality, SpecialitySchema } from 'src/speciality/schemas/speciality.schema';
+import { Speciality, SpecialitySchema } from '.././speciality/schemas/speciality.schema';
 
 @Module({
   imports: [

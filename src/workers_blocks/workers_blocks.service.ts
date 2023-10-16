@@ -1,6 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateWorkersBlockDto } from './dto/create-workers_block.dto';
-import { UpdateWorkersBlockDto } from './dto/update-workers_block.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { WorkersBlock, WorkersBlockDocument } from './schemas/workers_block.schema';
 import { Model, isValidObjectId } from 'mongoose';
@@ -48,12 +47,6 @@ export class WorkersBlocksService {
     if (!isValidObjectId(id)) throw new BadRequestException("Wrong ID");
 
     return await this.workersBlockModel.findById(id).populate("worker").populate("block");
-  }
-
-  async update(id: string, updateWorkersBlockDto: UpdateWorkersBlockDto) {
-    if (!isValidObjectId(id)) throw new BadRequestException("Wrong ID");
-
-    return await this.workersBlockModel.findByIdAndUpdate(id, updateWorkersBlockDto, {new: true});
   }
 
   async remove(id: string) {

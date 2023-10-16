@@ -12,7 +12,7 @@ export class Speciality {
   @Prop({required: true})
   description: string;
 
-  @Prop({type: [{type: mongoose.Schema.Types.ObjectId, ref: "Worker"}]})
+  @Prop({type: mongoose.Schema.Types.ObjectId, ref: "Worker"})
   workers: Worker[];
 }
 

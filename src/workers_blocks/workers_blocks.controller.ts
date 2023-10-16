@@ -1,7 +1,6 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
 import { WorkersBlocksService } from './workers_blocks.service';
 import { CreateWorkersBlockDto } from './dto/create-workers_block.dto';
-import { UpdateWorkersBlockDto } from './dto/update-workers_block.dto';
 
 @Controller('workers-blocks')
 export class WorkersBlocksController {
@@ -20,11 +19,6 @@ export class WorkersBlocksController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.workersBlocksService.findOne(id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateWorkersBlockDto: UpdateWorkersBlockDto) {
-    return this.workersBlocksService.update(id, updateWorkersBlockDto);
   }
 
   @Delete(':id')
